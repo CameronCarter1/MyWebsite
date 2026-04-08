@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cameron Carter — IT & Cybersecurity Specialist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1b2f45;
+      --slate: #2c4a6e;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --text-dark: #1a1a2e;
+      --text-mid: #3d4f63;
+      --text-light: #7a8fa6;
+      --section-bg: #f9f7f3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--slate) 100%);
+      display: flex; align-items: center;
+      padding: 6rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text { order: 1; }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.05em;
+      margin-bottom: 2.4rem;
+      border-left: 2px solid var(--gold);
+      padding-left: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      border: 2px solid var(--gold);
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-photo-wrap {
+      order: 2;
+      display: flex; justify-content: center;
+    }
+
+    .hero-photo-frame {
+      width: 320px; height: 380px;
+      position: relative;
+    }
+
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px;
+      right: -16px; bottom: -16px;
+      border: 2px solid var(--gold);
+      z-index: 0;
+    }
+
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      text-align: center;
+      gap: 0.75rem;
+      position: relative; z-index: 1;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .hero-photo-placeholder:hover { background: var(--slate); }
+
+    .photo-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1px dashed var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 5rem 5%; }
+
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(13,27,42,0.12);
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      font-size: 1.02rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .about-highlights { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .highlight-card {
+      background: var(--section-bg);
+      border-left: 3px solid var(--gold);
+      padding: 1.1rem 1.4rem;
+    }
+
+    .highlight-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .highlight-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--section-bg); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid rgba(13,27,42,0.1);
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(13,27,42,0.1);
+    }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 1.4rem;
+    }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem;
+      background: var(--section-bg);
+      color: var(--slate);
+      border: 1px solid rgba(44,74,110,0.2);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      border: 1.5px solid var(--navy);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s;
+    }
+
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+
+    .experience-list { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(13,27,42,0.1);
+    }
+
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .exp-meta { padding-top: 0.15rem; }
+
+    .exp-dates {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+
+    .exp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+    .exp-bullets li {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--section-bg); }
+
+    .skills-grid { display: flex; flex-direction: column; gap: 2.2rem; }
+
+    .skill-group h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--navy);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(13,27,42,0.12);
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    .skill-tag {
+      padding: 0.45rem 1rem;
+      background: var(--white);
+      border: 1px solid rgba(44,74,110,0.2);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .cert-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
+
+    .cert-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--white);
+      padding: 0.9rem 1.2rem;
+      border: 1px solid rgba(13,27,42,0.1);
+      border-left: 3px solid var(--gold);
+    }
+
+    .cert-item .cert-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .cert-item .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      text-align: center;
+    }
+
+    #contact .section-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.15); }
+    #contact .section-label { color: var(--gold); }
+
+    .contact-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 1rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      border: 1.5px solid rgba(201,168,76,0.4);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: border-color 0.22s, background 0.22s, color 0.22s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .contact-icon { font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070f18;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-frame { width: 220px; height: 260px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-name">Cameron Carter</a>
+    <ul class="nav-links">
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Portfolio</p>
+        <h1 class="hero-name">Cameron<br/>Carter</h1>
+        <p class="hero-title">IT &amp; Cybersecurity Specialist</p>
+        <a href="#" class="btn-primary" download>Download Résumé</a>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <div class="hero-photo-placeholder">
+            <div class="photo-icon">📷</div>
+            <span>Add your photo here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">Who I Am</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm Cameron Carter, a Computer Science student at Howard University and an emerging IT and cybersecurity professional with hands-on experience in enterprise systems and infrastructure. My technical foundation spans server environments, Storage Area Networks, high-availability configurations, and security operations which are skills I've built through both academic study, personal projects, and real-world application.
+          </p>
+          <p>
+            My journey into tech was driven by a genuine fascination with how systems work and, more importantly, how they can be protected. The ever-evolving nature of cybersecurity keeps me constantly learning, adapting, and sharpening my skills.
+          </p>
+          <p>
+            I am actively pursuing opportunities in cybersecurity, IT infrastructure, and systems engineering where I can contribute to building and defending resilient systems.
+          </p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <h4>Background</h4>
+            <p> Server systems, SAN environments, network and log monitoring, and cross-functional technical collaboration.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Target Roles</h4>
+            <p>Cybersecurity Analyst, IT Systems Engineer, SOC Analyst, IT Support Specialist.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Motivation</h4>
+            <p>Driven by a passion for understanding systems deeply and protecting the digital infrastructure that organizations depend on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">What I've Built</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <h3>Enterprise SOC Home Lab — SIEM Deployment & Threat Detection</h3>
+          <p>Designed and deployed a virtualized Security Operations Center (SOC) environment using VMware Fusion, featuring a Windows Server 2022 Splunk SIEM, a Windows 11 endpoint, and a Kali Linux attack machine on an isolated private network. Configured Splunk Enterprise for log ingestion, deployed the Universal Forwarder and Sysmon with custom threat detection rules, and simulated real-world attacks including network reconnaissance, brute force, and privilege escalation. Mapped detections to the MITRE ATT&CK framework and produced incident reports documenting attack timelines, indicators of compromise, and remediation steps.</p>
+          <div class="tech-tags">
+            <span class="tag">Incident Response</span>
+            <span class="tag">Windows, Kali Linux, VMware Fusion</span>
+            <span class="tag">Log Management & Analysis</span>
+          </div>
+          <a href="https://github.com/cameroncarter" class="btn-outline" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Project Two Title</h3>
+          <p>A brief description of what this project does, the problem it solves, and your role in building it. Keep it concise and results-focused.</p>
+          <div class="tech-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Firewall</span>
+            <span class="tag">SIEM</span>
+          </div>
+          <a href="https://github.com/cameroncarter" class="btn-outline" target="_blank">View on GitHub</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Where I've Worked</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-list">
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <p class="exp-dates">April 2024 — August 2024</p>
+            <p class="exp-company">Cloudshape</p>
+          </div>
+          <div class="exp-body">
+            <h3 class="exp-title">Systems Engineer Intern</h3>
+            <ul class="exp-bullets">
+              <li>Configured and deployed server and Storage Area Network (SAN) systems to meet client-specific technical requirements while ensuring optimal hardware and network performance.</li>
+              <li>Conducted high-availability (HA) testing on configured systems to validate reliability, fault tolerance, and performance under operational stress conditions.</li>
+              <li>Maintained detailed technical documentation, including configuration procedures, testing results, and system modifications, to support quality assurance and operational continuity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <p class="exp-dates">2019 — 2022</p>
+            <p class="exp-company">Company Name</p>
+          </div>
+          <div class="exp-body">
+            <h3 class="exp-title">Job Title</h3>
+            <ul class="exp-bullets">
+              <li>Describe a key responsibility or accomplishment with measurable impact.</li>
+              <li>Highlight a technical achievement, tool, or system you worked with.</li>
+              <li>Showcase cross-functional collaboration or leadership contributions.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">What I Bring</p>
+      <h2 class="section-title">Skills &amp; Certifications</h2>
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h3>Cybersecurity</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Network Security</span>
+            <span class="skill-tag">SIEM</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+            <span class="skill-tag">Incident Response</span>
+            <span class="skill-tag">Threat Analysis</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Infrastructure &amp; Systems</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Windows Server</span>
+            <span class="skill-tag">SAN / Storage</span>
+            <span class="skill-tag">Virtualization</span>
+            <span class="skill-tag">High Availability</span>
+            <span class="skill-tag">Active Directory</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Splunk</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Certifications</h3>
+          <div class="cert-list">
+            <div class="cert-item">
+              <div>
+                <div class="cert-name">Security+</div>
+                <div class="cert-issuer">CompTIA · 2026</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div>
+                <div class="cert-name">AWS Certified Solutions Architect – Associate (SAA-C03)</div>
+                <div class="cert-issuer">Amazon Web Services · 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-sub">Open to new opportunities — let's connect.</p>
+      <div class="contact-links">
+        <a href="mailto:mrcameroncarter1@gmail.com" class="contact-link">
+          <span class="contact-icon">✉️</span> Email
+        </a>
+        <a href="https://linkedin.com/in/mrcameroncarter" class="contact-link" target="_blank">
+          <span class="contact-icon">💼</span> LinkedIn
+        </a>
+        <a href="https://github.com/CameronCarter1" class="contact-link" target="_blank">
+          <span class="contact-icon">🐙</span> GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Cameron Carter · IT &amp; Cybersecurity Specialist
+  </footer>
+
+</body>
+</html>
